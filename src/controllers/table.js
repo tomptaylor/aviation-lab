@@ -1,13 +1,53 @@
 export const TableController = {
-    getMockData() {
-        return {
-            title: "ACTIVE AIRSPACE DISPATCH",
-            headers: ["Tail Number", "Type", "Status", "Hazmat"],
-            rows: [
-                { id: "N12345", type: "Cessna 172", status: "Active", hazmat: false },
-                { id: "N8822A", type: "Boeing 737", status: "Maintenance", hazmat: true },
-                { id: "N990WY", type: "Airbus A320", status: "Grounded", hazmat: false }
-            ]
-        };
-    }
+  getMockData() {
+    return {
+      title: "ACTIVE AIRSPACE DISPATCH",
+      headers: [
+        "Name",
+        "Type",
+        "Min",
+        "Max",
+        "Gen Type",
+        "Gen",
+        "Constraint",
+        "Unique",
+        "Not Null",
+      ],
+      rows: [
+        {
+          id: "Name",
+          type: "Text",
+          min: "",
+          max: "",
+          gentype: "",
+          gen: "",
+          constr: "",
+          unique: true,
+          notnull: false,
+        },
+        {
+          id: "Age",
+          type: "Boeing 737",
+          min: "",
+          max: "",
+          gentype: "",
+          gen: "",
+          constr: "",
+          unique: true,
+          notnull: false,
+        },
+        {
+          id: "Active",
+          type: "Airbus A320",
+          min: "",
+          max: "",
+          gentype: "",
+          gen: "",
+          constr: "",
+          unique: false,
+          notnull: false,
+        },
+      ],
+    };
+  },
 };
