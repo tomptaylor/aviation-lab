@@ -7,6 +7,42 @@ import "@ui5/webcomponents/dist/Select.js";
 import "@ui5/webcomponents/dist/Option.js";
 import "@ui5/webcomponents/dist/CheckBox.js";
 import "@ui5/webcomponents/dist/Input.js";
+import { faker } from "@faker-js/faker";
+
+const LibraryScanner = {
+  verifyPath(inputPath) {
+    // Example inputPath: "perso.firstame"
+    const parts = inputPath.split("."); // ['perso', 'firstame']
+    let currentLevel = faker;
+    let validPath = [];
+
+    for (const part of parts) {
+      if (currentLevel && part in currentLevel) {
+        validPath.push(part);
+        currentLevel = currentLevel[part];
+      } else {
+        // We found the typo!
+        const suggestions = this.getSuggestions(part, currentLevel);
+        return {
+          isValid: false,
+          errorAt: part,
+          didYouMean: suggestions,
+        };
+      }
+    }
+    return { isValid: true, value: currentLevel() };
+  },
+
+  getSuggestions(typo, level) {
+    if (!level) return [];
+    const keys = Object.keys(level);
+
+    // Simple filter: find keys that start with the same letter or are similar
+    return keys.filter((key) =>
+      key.toLowerCase().includes(typo.toLowerCase().substring(0, 2)),
+    );
+  },
+};
 
 export const TableView = {
   renderTable(data) {
@@ -59,6 +95,17 @@ export const TableView = {
                 if (selectedText === "Faker") {
                   console.log("faker");
                   choiceInput.placeholder = "Enter in Faker choice";
+                  choiceInput.addEventListener("input", (e) => {
+                    const result = LibraryScanner.verifyPath(e.target.value);
+                    console.log("here", result);
+                    if (!result.isValid) {
+                      input.valueState = "Error";
+                      input.valueStateMessage = `Typo: "${result.errorAt}". Did you mean: ${result.didYouMean.join(", ")}?`;
+                    } else {
+                      input.valueState = "Success";
+                      input.valueStateMessage = "Valid Faker Path!";
+                    }
+                  });
                 }
               }
             });

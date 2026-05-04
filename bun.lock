@@ -6,6 +6,7 @@
       "name": "aviation-lab",
       "dependencies": {
         "@ui5/webcomponents": "^2.21.1",
+        "faker": "^6.6.6",
       },
       "devDependencies": {
         "vite": "^8.0.10",
@@ -86,6 +87,8 @@
     "@ui5/webcomponents-theming": ["@ui5/webcomponents-theming@2.21.1", "", { "dependencies": { "@sap-theming/theming-base-content": "11.34.1", "@ui5/webcomponents-base": "2.21.1" } }, "sha512-BWwQ5vKBXo2I5Bd0y14SGMecrTsltmeBAZdAG3ZGyfyRS48NG9j6yPyTGyRNTj8mPb45egif6EkOMwWilcHfKA=="],
 
     "detect-libc": ["detect-libc@2.1.2", "", {}, "sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ=="],
+
+    "faker": ["faker@6.6.6", "", {}, "sha512-9tCqYEDHI5RYFQigXFwF1hnCwcWCOJl/hmll0lr5D2Ljjb0o4wphb69wikeJDz5qCEzXCoPvG6ss5SDP6IfOdg=="],
 
     "fdir": ["fdir@6.5.0", "", { "peerDependencies": { "picomatch": "^3 || ^4" }, "optionalPeers": ["picomatch"] }, "sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg=="],
 
